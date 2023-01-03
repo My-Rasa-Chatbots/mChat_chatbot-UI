@@ -1,0 +1,656 @@
+:root{
+  --menu_btn_bg : rgba(109, 209, 109, 0.76);
+  --menu_btn_border : rgba(109, 209, 109, 0.76);
+  --user_msg_bg:#060dcfc7;
+  --bot_msg_bg:#e3e7ee;
+
+}
+body {
+  font-family: "Open Sans", sans-serif;
+  background: url("../img/bg.png") no-repeat center center fixed;
+  background-size: cover;
+}
+
+/* ============= css related to chats =============== */
+
+.widget {
+  z-index: 100;
+  display: none;
+  width: 350px;
+  height: 580px;
+  bottom: 2vw;
+  right: 7vw;
+  position: fixed;
+  background: #fff;
+  border-radius: 10px 10px 10px 10px;
+  box-shadow: 0 0px 1px 0 rgba(0, 0, 0, 0.16), 0 0px 5px 0 #00000096;
+}
+
+.chat_header {
+  height: 55px;
+  background: #060dcfc7;
+  border-radius: 10px 10px 0px 0px;
+  padding: 5px;
+  font-size: 20px;
+}
+
+.chat_header_title {
+  color: white;
+  float: left;
+  margin-top: 2%;
+  margin-left: 0%;
+  font-size: 25px;
+  font-weight: 600;
+}
+.titleProfile{
+  height: 40px;
+  width: 40px;
+  padding: 2px;
+  float: left;
+  border-radius: 50%;
+  background: #fff;
+  margin: 3px 5px 5px 15px;
+}
+.chats {
+  /* display: none; */
+  height: 440px;
+  padding: 2px;
+  border-radius: 1px;
+  overflow-y: scroll;
+  margin-top: 1px;
+  transition: 0.2s;
+}
+#initial_welcome_info{
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  height: 80%;
+  opacity: 0.7;
+  padding: 10px 20px 10px 20px;
+}
+div.chats::-webkit-scrollbar {
+  overflow-y: hidden;
+  width: 0px;
+  /* remove scrollbar space /
+    background: transparent;
+    / optional: just make scrollbar invisible */
+}
+
+.clearfix {
+  margin-top: 2px;
+  margin-bottom: 2px;
+}
+
+.botAvatar {
+  border-radius: 50%;
+  width: 1.5em;
+  height: 1.5em;
+  float: left;
+  margin-left: 5px;
+}
+
+.botMsg {
+  float: left;
+  margin-top: 5px;
+  background: var(--bot_msg_bg);
+  color: black;
+  /* box-shadow: 2px 3px 9px 0px #9a82842e; */
+  margin-left: 0.5em;
+  padding: 10px;
+  border-radius: 1.5em;
+  max-width: 70%;
+  min-width: 25%;
+  font-size: 13px;
+  word-wrap: break-word;
+  margin-bottom: 5px;
+  border-radius: 5px 20px 20px 20px;
+}
+
+/* For main menu header only */
+.menu_header{
+  background-color: rgba(109, 209, 109, 0.623);
+}
+/*  */
+
+div.chats > pre {
+  font-family: monospace, monospace;
+  font-size: 1em;
+  margin: 0 !important;
+  /* display: inline !important; */
+  white-space: initial !important;
+}
+div.chats > ul:not(.browser-default) {
+  padding-left: 1em;
+}
+div.chats > ul:not(.browser-default) > li {
+  list-style-type: initial;
+}
+
+div.chats > span.botMsg > ol {
+  padding-left: 1em;
+}
+textarea {
+  box-shadow: none;
+  resize: none;
+  outline: none;
+  overflow: hidden;
+  font-family: Lato;
+  
+}
+
+textarea::-webkit-input-placeholder {
+  font-family: Lato;
+}
+
+textarea-webkit-scrollbar {
+  width: 0 !important;
+}
+
+.userMsg {
+  animation: animateElement linear 0.2s;
+  animation-iteration-count: 1;
+  margin-top: 5px;
+  word-wrap: break-word;
+  padding: 10px;
+  float: right;
+  margin-right: 0.5em;
+  background: var(--user_msg_bg);
+  color: white;
+  margin-bottom: 0.15em;
+  font-size: 13px;
+  max-width: 65%;
+  min-width: 15%;
+  border-radius: 20px 5px 20px 20px;
+  /* box-shadow: 0px 2px 5px 0px #9a828454; */
+}
+
+blockquote {
+  margin: 20px 0;
+  padding-left: 1.5rem;
+  border-left: 5px solid #ee6e73;
+  margin-block-start: 0 !important;
+  margin-block-end: 0 !important;
+  margin-inline-start: 0 !important;
+  margin-inline-end: 0 !important;
+}
+/* Typing suggestion section */
+.typing_suggestion_section{
+  padding: 0px 8px;
+  margin-top: 5px;
+  height: 25px;
+  width: auto;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  gap: 3px;
+  overflow-x: auto;
+  /* border-radius: 8px; */
+}
+.typing_suggestion_section::-webkit-scrollbar{
+  width: 0;
+  height: 0;
+}
+
+.typing_suggestion_section > div{
+  height: 25px;
+  padding: 3px;
+  border: 1px solid gray;
+  display: block;
+  border-radius: 8px;
+  font-size:12px;
+  white-space: nowrap;
+  cursor: pointer;
+  color: blueviolet;
+}
+
+.typing_suggestion_section > div:hover{
+  background: rgba(137, 43, 226, 0.74);
+  color: white;
+}
+/* Typing section */
+.userAvatar {
+  animation: animateElement linear 0.3s;
+  animation-iteration-count: 1;
+  border-radius: 50%;
+  width: 1.5em;
+  height: 1.5em;
+  float: right;
+  margin-right: 5px;
+  /* border: 2px solid  #060DCF ; */
+}
+
+.usrInput {
+  padding: 0.5em;
+  width: 72%;
+  border: 0;
+  padding-left: 15px;
+  height: 40px;
+}
+textarea::placeholder{
+  color: #131313de;
+  font-style: italic;
+}
+.keypad {
+  /* display: none;  */
+  background: white;
+  height: 50px;
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+  padding: 5px;
+  border-radius: 0px 0px 10px 10px;
+  border: 2px solid #0050db;
+}
+
+#sendButton {
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  display: inline-block;
+  float: right;
+  margin-right: 30px;
+  text-align: center;
+  padding: 5px;
+  font-size: 20px;
+  cursor: pointer;
+  color: #060dcfc7;
+}
+
+
+/* chat opening icon/bot icon */
+.profile_div {
+  /* display: none; */
+  position: fixed;
+  padding: 5px;
+  width: 7%;
+  bottom: 7px;
+  right: 0;
+  cursor: pointer;
+  z-index: 100000;
+}
+.imgProfile {
+  box-shadow: 0 0px 1px 0 rgba(0, 0, 0, 0.16), 0 0px 10px 0 #00000096;
+  border-radius: 50px;
+  width: 60%;
+
+}
+
+/* Bot pop-up intro */
+
+.show-prompt {
+  visibility: hidden;
+  opacity: 0;
+  color: #fff;
+  background: #060dcfee;
+  cursor: pointer;
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  padding: 20px;
+  transition: visibility 0.5s, opacity 0.3s linear;
+}
+.show-prompt:hover{
+  visibility: visible;
+  opacity: 1;
+  transition: visibility 0.5s, opacity 0.3s linear;
+}
+.show-prompt-content{
+  margin-top: 28%;
+  margin-left: 30%;
+}
+.show-prompt > .profile-white-bg{
+  position: fixed;
+  background: #fff;
+  right: -10px;
+  bottom: -10px;
+  background: #fff;
+  cursor: pointer;
+  animation-name: white_bg_animate;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+}
+/* The animation code */
+@keyframes white_bg_animate {
+  0% {
+    transform: scale(1.2,1.2);
+  }
+  50% {
+    transform: scale(1,1);
+  }
+  100% {
+    transform: scale(1.2,1.2);
+  }
+}
+/* Use a media query to add a breakpoint at 800px: */
+@media screen and (min-width: 1000px) {
+  .show-prompt{
+    width: 350px;
+    height: 350px;
+    border-top-left-radius: 350px;
+  }
+  .show-prompt > .profile-white-bg{
+    height: 150px;
+    width: 150px;
+    border-top-left-radius: 140px;
+  }
+}
+@media screen and (min-width: 100px) and (max-width: 1000px){
+  .show-prompt{
+    width: 300px;
+    height: 300px;
+    border-top-left-radius: 300px;
+  }
+  .show-prompt > .profile-white-bg{
+    height: 100px;
+    width: 100px;
+    border-top-left-radius: 100px;
+  }
+}
+div .open{
+  visibility: visible;
+  opacity: 1;
+  transition: visibility 0.5s, opacity 0.3s linear;
+}
+
+/* css for dropdown menu of the bot */
+
+#close:hover,
+#restart:hover{
+  color: white;
+}
+
+.header_icons {
+  cursor: pointer;
+  color: rgba(255, 255, 255, 0.884);
+  margin-right: 5px;
+  float: right;
+  margin-top: 3%;
+}
+
+.header_icons > span {
+  padding: 0px 5px;
+  cursor: pointer;
+}
+
+@keyframes animateElement {
+  0% {
+    opacity: 0;
+    transform: translate(0px, 10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0px, 0px);
+  }
+}
+
+/* css for image card */
+
+.imgcard {
+  object-fit: cover;
+  width: 70%;
+  height: 45%;
+  border-radius: 10px;
+  margin-left: 2em;
+}
+
+/* css for markdown images */
+
+.imgcard_mrkdwn {
+  width: 70%;
+  border-radius: 10px;
+  margin-left: 1%;
+}
+
+/* css for suggestions buttons */
+
+/* .suggestions {
+  padding: 5px;
+  max-width: 80%;
+  border-radius: 10px;
+  background: #ffffff;
+  box-shadow: 2px 5px 5px 1px #dbdade;
+} */
+
+.menuTitle {
+  padding: 5px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.menu {
+  float: left;
+  margin-left: 1.5em;
+  padding: 5px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  max-width: 90%;
+  column-gap: 10px;
+  row-gap: 5px;
+  /* border: 1px solid #ddd; */
+  /* margin-top: -5px; */
+}
+
+
+.menuChips , .menuChipsUrl{
+  display: block;
+  /* background: var(--bot_msg_bg); */
+  color: #060dcfc7;
+  text-align: center;
+  padding: 3px 8px;
+  cursor: pointer;
+  font-size: 13px;
+  border-radius: 1em;
+  border: 1px solid var(--menu_btn_border);
+  font-weight: 600;
+  word-wrap: break-word;
+}
+.menuChips:hover, .menuChipsUrl:hover{
+  background: var(--menu_btn_bg);
+  /* color: white; */
+}
+.disabled{
+  pointer-events: none;
+}
+/* css for collapsible */
+
+.collapsible {
+  margin-top: 10px;
+  margin-left: 10%;
+  padding-right: 5%;
+  max-width: 70%;
+  min-width: 25%;
+  font-size: 13px;
+  word-wrap: break-word;
+  border-radius: 20px;
+  background: white;
+  border-radius: 0px 20px 20px 20px;
+  -webkit-box-shadow: none;
+  border-bottom: 1px solid #ddd;
+}
+ul.collapsible:not(.browser-default) > li {
+  list-style-type: none !important;
+}
+.collapsible-body{
+  padding: 5px 5px 10px 5px;
+}
+.collapsible-body > span{
+  padding: 0px 0px 0px 0px;
+}
+
+.collapsible-header {
+  font-weight: bold;
+  color: #060dcfc7;
+}
+
+ul.collapsible > li:first-child .collapsible-header {
+  /* border-radius: 20px 20px 0px 0px; */
+}
+
+ul.collapsible > li:last-child .collapsible-header {
+  color: #060dcfc7;
+  /* border-radius: 0px 0px 20px 20px; */
+}
+
+ul.collapsible > li:last-child .collapsible-body {
+  border-bottom: none;
+}
+
+.collapsible-header {
+  padding: 10px;
+}
+
+/* css for botTyping */
+
+.botTyping {
+  float: left;
+  margin-top: 5px;
+  background: #e3e7ee;
+  color: #000000;
+  /* box-shadow: 2px 3px 9px 0px #9a82847a; */
+  margin-left: 0.5em;
+  padding: 15px;
+  border-radius: 5px 20px 20px 20px;
+  max-width: 60%;
+  min-width: 20%;
+  word-wrap: break-word;
+  border-radius: 5px 20px 20px 20px;
+}
+
+.botTyping > div {
+  width: 10px;
+  height: 10px;
+  background-color: #060dcfc7;
+  border-radius: 100%;
+  display: inline-block;
+  -webkit-animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+  animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+  margin-right: 5px;
+}
+
+.botTyping .bounce1 {
+  -webkit-animation-delay: -0.32s;
+  animation-delay: -0.32s;
+}
+
+.botTyping .bounce2 {
+  -webkit-animation-delay: -0.16s;
+  animation-delay: -0.16s;
+}
+
+@-webkit-keyframes sk-bouncedelay {
+  0%,
+  80%,
+  100% {
+    -webkit-transform: scale(0);
+  }
+  40% {
+    -webkit-transform: scale(1);
+  }
+}
+
+@keyframes sk-bouncedelay {
+  0%,
+  80%,
+  100% {
+    -webkit-transform: scale(0);
+    transform: scale(0);
+  }
+  40% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+}
+
+input:focus {
+  outline: none;
+}
+
+
+
+/* Form styling */
+
+#inputForm > input {
+  all: unset;
+  /* width: 80%; */
+  border: 1px black solid;
+  margin-bottom: 10px;
+}
+.form{
+
+  float: left;
+  margin-top: 5px;
+  background: #e3e7ee;
+  color: black;
+  /* box-shadow: 2px 3px 9px 0px #9a82842e; */
+  margin-left: 0.5em;
+  padding: 15px;
+  border-radius: 1.5em;
+  width: 80%;
+  font-size: 13px;
+  border-radius: 5px 20px 20px 20px;
+}
+#inputForm{
+  display: flex;
+  flex-direction: column;
+}
+
+#inputForm > input {
+  border: 2px black solid;
+  margin-bottom: 10px;
+  height: 25px;
+  padding: 2px 7px;
+  border-radius: 5px;
+}
+#inputForm > input.invalid {
+  border: 2px red solid;
+}
+#inputForm > input:focus.invalid {
+  outline: none !important;
+  border: 2px red solid;
+}
+#inputForm > input.valid{
+  border: 2px green solid;
+}
+#inputForm > input:focus.valid{
+  outline: none !important;
+  border: 2px green solid;
+}
+
+
+#inputForm > div > #formSubmitButton {
+  border: none;
+  width: 40%;
+  border-radius: 10px;
+  color: white;
+  padding: 10px;
+  background: rgba(0, 80, 219, 0.7);
+}
+#inputForm > div > #formSubmitButton:hover{
+  background: rgba(0, 80, 219, 1);
+}
+
+#inputForm > div > #formCancelButton {
+  border: none;
+  width: 40%;
+  border-radius: 10px;
+  color: white;
+  padding: 10px;
+  float: right;
+  background: rgba(219, 69, 0, 0.7);
+}
+#inputForm > div > #formCancelButton:hover{
+  background: rgba(219, 69, 0, 1);
+  
+}
+.formTitle{
+  font-weight: 600;
+  font-size: 20px;
+}
+.message{
+  height: 20px;
+  display: block;
+  color: red;
+}
