@@ -5,7 +5,7 @@ const botAvatar_img_src = "./Static/img/botAvatar.jpg";
 const userAvatar_img_src = "./static/img/userAvatar.jpg";
 const rasa_conversation_API = "http://localhost:5005/conversations/"
 
-var suggestion_topics;
+var suggestion_topics=[];
 const mongo_topics_API = "https://data.mongodb-api.com/app/data-wfzfo/endpoint/data/beta"
 const mongo_topics_API_Key = "6310e05a25a41ce3dc217934"
 // var welcome_text = `<div id="initial_welcome_info">
