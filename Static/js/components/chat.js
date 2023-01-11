@@ -62,10 +62,8 @@ function setBotResponse(response) {
             $(BotResponse).appendTo(".chats").hide().fadeIn(100);
             scrollToBottomOfResults();
         } else {
-            // showForm()
             // if we get response from Rasa
             // console.log("Responsess:: "+response[1].text)
-            // console.log(response)
             if(typeof(response)=="string"){
                 // console.log("resppp:",response)
                 const BotResponse = getBotResponse(response);
@@ -108,7 +106,9 @@ function setBotResponse(response) {
                         else {
                             // if no markdown formatting found, render the text as it is.
                             if (!botResponse) {
-                                botResponse = `<img class="botAvatar" src="${botAvatar_img_src}"/><p class="botMsg">${response[i].text}</p><div class="clearfix"></div>`;
+                                
+                                style = i+1 == response.length ? `<img class="botAvatar" src="${botAvatar_img_src}"/>` : ''
+                                botResponse = `${style}<p class="botMsg">${response[i].text}</p><div class="clearfix"></div>`;
                             }
                         }
                         // append the bot response on to the chat screen
@@ -161,7 +161,7 @@ function setBotResponse(response) {
                                 let html = converter.makeHtml(payload_data);
                                 
                                 html = html.replaceAll("<p>", "").replaceAll("</p>", "").replaceAll("<strong>", "<b>").replaceAll("</strong>", "</b>");
-                                html = html.replaceAll(/(?:\\r\n|\\r|\\n)/g, "<br>");
+                                html = html.replaceAll(/(?:\\r\n|\\r|\\n)/g, "<br>").replaceAll(/(\\t)/g,"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;");
                                 
                                 // console.log("html: "+html);
                                 // check for links
@@ -195,7 +195,10 @@ function setBotResponse(response) {
                                 else {
                                     // if no markdown formatting found, render the text as it is.
                                     if (!botResponse) {
-                                        botResponse = `<img class="botAvatar" src="${botAvatar_img_src}"/><p class="botMsg ${textClass}">${html}</p><div class="clearfix"></div>`;
+                                        
+                                        style = true ? `<img class="botAvatar" src="${botAvatar_img_src}"/>` : ''
+                                        console.log(response.length)
+                                        botResponse = `${style}<p class="botMsg ${textClass}">${html}</p><div class="clearfix"></div>`;
                                     }
                                 }
                                 // append the bot response on to the chat screen
@@ -225,7 +228,7 @@ function setBotResponse(response) {
                         if (payload_type === "video") {
                             if (payload_data !== null) {
                                 const video_url = payload_data;
-
+                                
                                 const BotResponse = `<div class="video-container"> <iframe src="${video_url}" frameborder="0" allowfullscreen></iframe> </div>`;
                                 $(BotResponse).appendTo(".chats").hide().fadeIn(100);
                             }
@@ -264,12 +267,10 @@ function setBotResponse(response) {
                             const form_data = custom_message[key].data
                             storeTopics(form_data);
                         }
-                        
                         scrollToBottomOfResults();
                     }
                 }
             }
-            scrollToBottomOfResults();
         }
         $(".usrInput").focus();
     },1);

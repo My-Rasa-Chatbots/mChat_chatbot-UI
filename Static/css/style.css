@@ -16,10 +16,10 @@ body {
 .widget {
   z-index: 100;
   display: none;
-  width: 350px;
+  width: 400px;
   height: 580px;
-  bottom: 2vw;
-  right: 7vw;
+  bottom: 3vh;
+  right: 15vh;
   position: fixed;
   background: #fff;
   border-radius: 10px 10px 10px 10px;
@@ -89,6 +89,8 @@ div.chats::-webkit-scrollbar {
   height: 1.5em;
   float: left;
   margin-left: 5px;
+  margin-top: 5px;
+  
 }
 
 .botMsg {
@@ -100,12 +102,17 @@ div.chats::-webkit-scrollbar {
   margin-left: 0.5em;
   padding: 10px;
   border-radius: 1.5em;
-  max-width: 70%;
+  max-width: 80%;
   min-width: 25%;
   font-size: 13px;
   word-wrap: break-word;
   margin-bottom: 5px;
   border-radius: 5px 20px 20px 20px;
+}
+
+.link{
+  font-weight: 600;
+  color: var(--user_msg_bg);
 }
 
 /* For main menu header only */
@@ -218,6 +225,7 @@ blockquote {
   height: 1.5em;
   float: right;
   margin-right: 5px;
+  margin-top: 5px;
   /* border: 2px solid  #060DCF ; */
 }
 
@@ -229,7 +237,7 @@ blockquote {
   height: 40px;
 }
 textarea::placeholder{
-  color: #131313de;
+  color: #949494cb;
   font-style: italic;
 }
 .keypad {
@@ -264,7 +272,7 @@ textarea::placeholder{
   /* display: none; */
   position: fixed;
   padding: 5px;
-  width: 7%;
+  width: 15vh;
   bottom: 7px;
   right: 0;
   cursor: pointer;
@@ -421,12 +429,12 @@ div .open{
 
 .menu {
   float: left;
-  margin-left: 1.5em;
+  margin-left: 2em;
   padding: 5px;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  max-width: 90%;
+  max-width: 80%;
   column-gap: 10px;
   row-gap: 5px;
   /* border: 1px solid #ddd; */
