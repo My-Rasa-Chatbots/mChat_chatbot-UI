@@ -14,8 +14,3 @@ include('./static/js/components/chat.js');
 include('./static/js/components/botTyping.js');
 include('./static/js/components/suggestonButtons.js');
 include('./static/js/components/collapsible.js')
-include('./static/js/components/cardsCarousel.js')
-include('./static/js/components/addressCollapsable.js')
-include('./Static/js/components/inputForm.js')
-
-include('./static/js/components/typingSuggestionButtons.js');

@@ -1,3 +1,55 @@
+var root_chat_element = document.querySelector('#chatbot-element')
+root_chat_element.innerHTML = `
+    <div class="widget">
+      <div class="chat_header">
+        <!--Add the name of the bot here -->
+        <img class="titleProfile" src="static/img/marlabs_logo_png.png" />
+        <span class="chat_header_title">mChat</span>
+        <span class="header_icons">
+          <span id="restart" class="material-icons material-symbols-outlined" title="Restart">autorenew</span>
+          <span id="close" class="material-icons material-symbols-outlined" title="Close">close</span>
+        </span>
+
+        <!-- Dropdown menu-->
+        <ul id="dropdown1" class="dropdown-content">
+          <li><a href="#" id="clear">Clear</a></li>
+          <li><a href="#" id="restart">Restart</a></li>
+          <li><a href="#" id="close">Close</a></li>
+        </ul>
+      </div>
+
+      <!--Chatbot contents goes here -->
+      <div class="chats" id="chats">
+        <div class="clearfix"></div>
+      </div>
+
+      <!--keypad for user to type the message -->
+      <div class="keypad">
+        <img class="botAvatar" style="transform: scale(1.5); margin: 5px;" src="static/img/userAvatar.jpg" />
+        <textarea id="userInput" placeholder="Type your query here..." class="usrInput"></textarea>
+        <div id="sendButton">
+          <i class="fa fa-paper-plane" aria-hidden="true"></i>
+        </div>
+      </div>
+    </div>
+    
+    <!--bot profile-->
+    <div class="profile_div" id="profile_div">
+      <img class="imgProfile" src="static/img/botAvatar.jpg" />
+    </div>
+  
+    <!-- Bot pop-up intro -->
+    <div class="show-prompt" id="show-prompt">
+      <div class="show-prompt-content">
+        <span class="hi">Hi there, 👋</span>
+        <p class="white-text">
+          I'm your smart chatbot to answer your queries. Click on bot icon to get started.
+        </p>
+      </div>
+    </div>
+`
+
+
 
 /* module for importing other js files */
 function include(file) {
@@ -12,11 +64,9 @@ function include(file) {
 
 // Bot pop-up intro
 document.addEventListener("DOMContentLoaded", () => {
-  // eslint-disable-next-line no-undef
-  $(".show-prompt").addClass("open")
   setTimeout(() => {
-    $(".show-prompt").removeClass("open")
-  }, 4000);
+    document.querySelector(".show-prompt").style.visibility = "hidden";
+  }, 5000);
 });
 
 /* import components */
@@ -42,20 +92,10 @@ window.addEventListener('load', () => {
     // drop down menu for close, restart conversation & clear the chats.
     $(".dropdown-trigger").dropdown();
 
-    // initiate the modal for displaying the charts,
-    // if you dont have charts, then you comment the below line
-    // $(".modal").modal();
-
-    // enable this if u have configured the bot to start the conversation.
-    // showBotTyping();
-    // $("#userInput").prop('disabled', true);
-
-    // if you want the bot to start the conversation
-    // customActionTrigger();
   });
   // Toggle the chatbot screen
   $("#profile_div").click(() => {
-    $(".show-prompt").removeClass("open");
+    document.querySelector(".show-prompt").style.visibility = "hidden";
     $(".widget").toggle(function () { $(this).animate({}, 100); });
     scrollToBottomOfResults();
   });
@@ -105,7 +145,7 @@ $(".usrInput").on("keyup", () => {
     })
   }
 
-  addTypingSuggestion(filtered_topics)
+  // addTypingSuggestion(filtered_topics)
   // console.log(typeof (filtered_topics))
 })
 

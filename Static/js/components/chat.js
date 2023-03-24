@@ -197,7 +197,7 @@ function setBotResponse(response) {
                                     if (!botResponse) {
                                         
                                         style = true ? `<img class="botAvatar" src="${botAvatar_img_src}"/>` : ''
-                                        console.log(response.length)
+                                        // console.log(response.length)
                                         botResponse = `${style}<p class="botMsg ${textClass}">${html}</p><div class="clearfix"></div>`;
                                     }
                                 }
@@ -233,39 +233,12 @@ function setBotResponse(response) {
                                 $(BotResponse).appendTo(".chats").hide().fadeIn(100);
                             }
                         }
-                       
-                        // check if the custom payload type is "cardsCarousel"
-                        if (payload_type === "cardsCarousel") {
-                            const restaurantsData = response[i].custom.data;
-                            showCardsCarousel(restaurantsData);
-                            // return;
-                        }
-
-                        // check if the custom payload type is "AddressCardsCarousel"
-                        if (payload_type === "addressCardsCarousel") {
-                            // const addressData = response[i].custom.data;
-                            // console.log("KO")
-                            createAddressCollapsible(payload_data);
-                            // return;
-                        }
 
                         // check of the custom payload type is "collapsible"
                         if (payload_type === "collapsible") {
                             const { data } = response[i].custom;
                             // pass the data variable to createCollapsible function
                             createCollapsible(data);
-                        }
-
-                        // check of the custom payload type is "form"
-                        if (payload_type === "form") {
-                            const form_data = custom_message[1].data
-                            showForm(form_data);
-                        }
-
-                        // check of the custom payload type is "inputSuggestions"
-                        if (payload_type === "inputSuggestions") {
-                            const form_data = custom_message[key].data
-                            storeTopics(form_data);
                         }
                         scrollToBottomOfResults();
                     }
