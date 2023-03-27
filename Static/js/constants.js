@@ -2,18 +2,7 @@
 const rasa_server_API = "http://localhost:5005/webhooks/rest/webhook";
 const botAvatar_img_src = "./Static/img/botAvatar.jpg";
 const userAvatar_img_src = "./static/img/userAvatar.jpg";
-const rasa_conversation_API = "http://localhost:5005/conversations/"
 
-var suggestion_topics=[];
-// const mongo_topics_API = "https://data.mongodb-api.com/app/data-wfzfo/endpoint/data/beta"
-// const mongo_topics_API_Key = "6310e05a25a41ce3dc217934"
-// var welcome_text = `<div id="initial_welcome_info">
-// <span>Welcome to Marlabs Website.</span>
-// <span>I'm mChat</span>
-// <span>How can I help you today with your queries?</span>
-// </div>`
-
-// const sender_id = uuidv4();
 var sender_id = "";
 function setChatClient() {
     sender_id = uuidv4();
@@ -113,41 +102,3 @@ function loadWelcomeMessage() {
     scrollToBottomOfResults();
 
 }
-
-
-// Get topics
-function storeTopics(topics_list){
-    // console.log(topics_list)
-    suggestion_topics = topics_list
-}
-// $.ajax({
-//     url: mongo_topics_API+"/action/findOne",
-//     type: "POST",
-//     crossDomain: true,
-//     contentType: "application/json",
-//     headers: {
-//         "api-key": mongo_topics_API_Key    
-//     },
-//     // Data
-//     data: JSON.stringify({
-//         "collection":"topics",
-//         "database":"mChat",
-//         "dataSource":"Cluster0"
-//     }),
-//     success(dbResponse, status) {
-//         console.log("Response from Mongo: ", dbResponse, "\nStatus: ", status);
-//     },
-//     error(xhr, textStatus) {}
-// });
-
-// curl --location --request POST 'https://data.mongodb-api.com/app/data-wfzfo/endpoint/data/beta/action/findOne' \
-// --header 'Content-Type: application/json' \
-// --header 'Access-Control-Request-Headers: *' \
-// --header 'api-key: <API_KEY>' \
-// --header 'Accept: application/ejson' \
-// --data-raw '{
-//     "collection":"topics",
-//     "database":"mChat",
-//     "dataSource":"Cluster0",
-//     "projection": {"_id": 1}
-// }'

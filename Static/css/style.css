@@ -93,26 +93,28 @@ div.chats::-webkit-scrollbar {
   width: 1.5em;
   height: 1.5em;
   float: left;
-  margin-left: 5px;
-  margin-top: 5px;
-  
+  margin-left: 5px;  
 }
 
 .botMsg {
   float: left;
-  margin-top: 5px;
   background: var(--bot_msg_bg);
   color: black;
   /* box-shadow: 2px 3px 9px 0px #9a82842e; */
-  margin-left: 0.5em;
+  margin-left: 2.5em;
   padding: 10px;
-  border-radius: 1.5em;
+  border-radius: 2em;
   max-width: 80%;
   min-width: 25%;
   font-size: 13px;
   word-wrap: break-word;
   margin-bottom: 5px;
-  border-radius: 5px 20px 20px 20px;
+  border-radius: 15px 15px 15px 15px;
+}
+.first {
+  border-radius: 5px 15px 15px 15px;
+  margin-left: 0.5em;
+  margin-top: 5px;
 }
 
 .link{
@@ -174,7 +176,7 @@ textarea-webkit-scrollbar {
   font-size: 13px;
   max-width: 65%;
   min-width: 15%;
-  border-radius: 20px 5px 20px 20px;
+  border-radius: 15px 5px 15px 15px;
   /* box-shadow: 0px 2px 5px 0px #9a828454; */
 }
 
@@ -400,16 +402,6 @@ div .open{
   margin-left: 1%;
 }
 
-/* css for suggestions buttons */
-
-/* .suggestions {
-  padding: 5px;
-  max-width: 80%;
-  border-radius: 10px;
-  background: #ffffff;
-  box-shadow: 2px 5px 5px 1px #dbdade;
-} */
-
 .menuTitle {
   padding: 5px;
   margin-top: 5px;
@@ -419,7 +411,7 @@ div .open{
 .menu {
   float: left;
   margin-left: 2em;
-  padding: 5px;
+  padding: 0px 5px 5px 5px;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
