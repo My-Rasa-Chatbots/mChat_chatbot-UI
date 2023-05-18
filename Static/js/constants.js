@@ -1,7 +1,9 @@
 // const initial_action_name = "action_initial_greet";
-const rasa_server_API = "http://localhost:5005/webhooks/rest/webhook";
+const rasa_server_API = "http://localhost:5005/rest";
 const botAvatar_img_src = "./Static/img/botAvatar.jpg";
 const userAvatar_img_src = "./static/img/userAvatar.jpg";
+
+const fallbackMsg = 'Something went wrong, please try again later.'
 
 var sender_id = "";
 function setChatClient() {

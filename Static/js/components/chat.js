@@ -54,8 +54,7 @@ function setBotResponse(response) {
 
   if (response.length < 1) {
     // if there is no response from Rasa, send  fallback message to the user
-    const fallbackMsg = 'Something went wrong, please try again later.'
-
+    
     const BotResponse = getBotResponse(fallbackMsg)
 
     $(BotResponse).appendTo('.chats').hide().fadeIn(100)
@@ -198,10 +197,11 @@ function send(message) {
     },
     error(xhr, textStatus) {
       if (message.toLowerCase() === '/restart') {
-        restartConversation()
+        // console.log("error while restarting");
       }
       // if there is no response from rasa server, set error bot response
       setBotResponse('')
+      // storeConversation(fallbackMsg, 'bot', sender_id)
       console.log('Error from bot end: ', textStatus, '\nMessage: ', message)
     },
   })

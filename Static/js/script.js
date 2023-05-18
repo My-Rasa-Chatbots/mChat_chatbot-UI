@@ -73,9 +73,15 @@ window.addEventListener('load', () => {
 
     // store sender_id in localStorage
     var user_session = localStorage.getItem("user_session")
-    if (!user_session) { // no previous session existed
+
+    if (!user_session) { // no previous session existed or no conversation exist
+      // console.log("restarting...");
       restartConversation();
     } else { //session already there
+      var user_conversations = JSON.parse(user_session).conversation
+      if(!user_conversations.length){
+        restartConversation()
+      }
       sender_id = JSON.parse(user_session).sender_id
       loadPreviousChats()
     }
