@@ -20,7 +20,7 @@ function scrollToBottomOfResults() {
  * @param {String} message user message
  */
 function setUserResponse(message) {
-  const user_response = `<img class="userAvatar" src='${userAvatar_img_src}'><p class="userMsg">${message} </p><div class="clearfix"></div>`
+  const user_response = `<p class="userMsg">${message} </p><div class="clearfix"></div>`
   $(user_response).appendTo('.chats').hide().fadeIn(100)
   $('.usrInput').val('')
   showBotTyping()
@@ -74,50 +74,51 @@ function setBotResponse(response) {
       if (Object.hasOwnProperty.call(response[i], 'text')) {
         if (response[i].text != null) {
           // convert the text to markdown format using showdown.js(https://github.com/showdownjs/showdown);
-          let botResponse
-          let html = converter.makeHtml(response[i].text)
-          html = html
-            .replaceAll('<p>', '')
-            .replaceAll('</p>', '')
-            .replaceAll('<strong>', '<b>')
-            .replaceAll('</strong>', '</b>')
-          html = html.replace(/(?:\\r\\n|\\r|\\n)/g, '<br>')
-          // console.log("html: "+html);
-          // check for blockquotes
-          if (html.includes('<blockquote>')) {
-            html = html.replaceAll('<br>', '<br>')
-            botResponse = getBotResponse(html)
-          }
-          // check for image
-          if (html.includes('<img')) {
-            html = html.replaceAll('<img', '<img class="imgcard_mrkdwn" ')
-            botResponse = getBotResponse(html)
-          }
-          // check for preformatted text
-          if (html.includes('<pre') || html.includes('<code>')) {
-            botResponse = getBotResponse(html)
-          }
-          // check for list text
-          if (
-            html.includes('<ul') ||
-            html.includes('<ol') ||
-            html.includes('<li') ||
-            html.includes('<h3')
-          ) {
-            html = html.replaceAll('<br>', '<br>')
-            // botResponse = `<img class="botAvatar" src="./static/img/sara_avatar.png"/><span class="botMsg">${html}</span><div class="clearfix"></div>`;
-            botResponse = getBotResponse(html)
-          } else {
-            // if no markdown formatting found, render the text as it is.
-            if (!botResponse) {
-              style =
-                i + 1 == response.length
-                  ? `<img class="botAvatar" src="${botAvatar_img_src}"/>`
-                  : ''
-              botResponse = getBotResponse(response[i].text)//`${style}<p class="botMsg">${response[i].text}</p><div class="clearfix"></div>`
-            }
-          }
+          // let botResponse
+          // let html = response[i].text
+          // html = html
+          //   .replaceAll('<p>', '')
+          //   .replaceAll('</p>', '')
+          //   .replaceAll('<strong>', '<b>')
+          //   .replaceAll('</strong>', '</b>')
+          // html = html.replace(/(?:\\r\\n|\\r|\\n)/g, '<br>')
+          // // console.log("html: "+html);
+          // // check for blockquotes
+          // if (html.includes('<blockquote>')) {
+          //   html = html.replaceAll('<br>', '<br>')
+          //   botResponse = getBotResponse(html)
+          // }
+          // // check for image
+          // if (html.includes('<img')) {
+          //   html = html.replaceAll('<img', '<img class="imgcard_mrkdwn" ')
+          //   botResponse = getBotResponse(html)
+          // }
+          // // check for preformatted text
+          // if (html.includes('<pre') || html.includes('<code>')) {
+          //   botResponse = getBotResponse(html)
+          // }
+          // // check for list text
+          // if (
+          //   html.includes('<ul') ||
+          //   html.includes('<ol') ||
+          //   html.includes('<li') ||
+          //   html.includes('<h3')
+          // ) {
+          //   html = html.replaceAll('<br>', '<br>')
+          //   // botResponse = `<img class="botAvatar" src="./static/img/sara_avatar.png"/><span class="botMsg">${html}</span><div class="clearfix"></div>`;
+          //   botResponse = getBotResponse(html)
+          // } else {
+          //   // if no markdown formatting found, render the text as it is.
+          //   if (!botResponse) {
+          //     style =
+          //       i + 1 == response.length
+          //         ? `<img class="botAvatar" src="${botAvatar_img_src}"/>`
+          //         : ''
+          //     botResponse = getBotResponse(response[i].text)//`${style}<p class="botMsg">${response[i].text}</p><div class="clearfix"></div>`
+          //   }
+          // }
           // append the bot response on to the chat screen
+          const botResponse = getBotResponse(response[i].text)
           $(botResponse).appendTo('.chats').hide().fadeIn(100)
         }
       }

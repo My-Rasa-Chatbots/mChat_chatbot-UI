@@ -1,4 +1,83 @@
 var root_chat_element = document.querySelector('#chatbot-element')
+
+// Chat header
+var chat_header_logo = document.createElement('img')
+chat_header_logo.setAttribute('class','chat_header_logo')
+chat_header_logo.src = 'static/img/marlabs_logo_png.png'
+
+var chat_header_title = document.createElement('span')
+chat_header_title.setAttribute('class','chat_header_title')
+chat_header_title.innerText = 'mChat'
+
+var chat_header_actions_restart = document.createElement('span')
+chat_header_actions_restart.setAttribute('class','material-icons material-symbols-outlined')
+chat_header_actions_restart.setAttribute('id', 'chat_header_actions_restart');
+chat_header_actions_restart.title = 'Restart'
+chat_header_actions_restart.innerText = 'autorenew'
+
+var chat_header_actions_close = document.createElement('span')
+chat_header_actions_close.setAttribute('class','material-icons material-symbols-outlined')
+chat_header_actions_close.setAttribute('id', 'chat_header_actions_close');
+chat_header_actions_close.title = 'Close'
+chat_header_actions_close.innerText = 'close'
+
+var chat_header_actions = document.createElement('span')
+chat_header_actions.setAttribute('class','chat_header_actions')
+chat_header_actions.appendChild(chat_header_actions_restart)
+chat_header_actions.appendChild(chat_header_actions_close)
+
+var chat_header = document.createElement('div')
+chat_header.setAttribute('class','chat_header')
+chat_header.appendChild(chat_header_logo)
+chat_header.appendChild(chat_header_title)
+chat_header.appendChild(chat_header_actions)
+
+// Chat body
+var chat_body = document.createElement('div')
+chat_body.setAttribute('class','chat_body')
+chat_body.setAttribute('id', 'chat_body')
+
+// Chat footer
+var chat_footer_input = document.createElement('textarea')
+chat_footer_input.placeholder = 'Type your query here...'
+chat_footer_input.setAttribute('id','chat_footer_input')
+var chat_footer_sendButton = document.createElement('div')
+chat_footer_sendButton.setAttribute('id', 'chat_footer_sendButton')
+chat_footer_sendButton.innerHTML = `<span class="material-icons material-symbols-outlined">send</span>`
+
+var chat_footer = document.createElement('div')
+chat_footer.setAttribute('class','chat_footer')
+chat_footer.appendChild(chat_footer_input)
+chat_footer.appendChild(chat_footer_sendButton)
+
+// Chat widget
+var chat_widget = document.createElement('div')
+chat_widget.setAttribute('class','chat_widget')
+chat_widget.appendChild(chat_header)
+chat_widget.appendChild(chat_footer)
+
+// Chatbot start button
+var chatbot_start_btn_img = document.createElement('img')
+chatbot_start_btn_img.setAttribute('class', 'chatbot_start_btn_img')
+chatbot_start_btn_img.src = 'static/img/botAvatar.jpg'
+
+var chatbot_start_btn = document.createElement('div')
+chatbot_start_btn.setAttribute('id', 'chatbot_start_btn')
+chatbot_start_btn.appendChild(chatbot_start_btn_img)
+
+// Chatbot pop prompt
+// var 
+
+// <!-- Bot pop-up intro -->
+// <div class="show-prompt" id="show-prompt">
+//   <div class="show-prompt-content">
+//     <span class="hi">Hi there, 👋</span>
+//     <p class="white-text">
+//       I'm your smart chatbot to answer your queries. Click on bot icon to get started.
+//     </p>
+//   </div>
+// </div>
+
 root_chat_element.innerHTML = `
     <div class="widget">
       <div class="chat_header">
@@ -18,10 +97,9 @@ root_chat_element.innerHTML = `
 
       <!--keypad for user to type the message -->
       <div class="keypad">
-        <img class="botAvatar" style="transform: scale(1.5); margin: 5px;" src="static/img/userAvatar.jpg" />
         <textarea id="userInput" placeholder="Type your query here..." class="usrInput"></textarea>
         <div id="sendButton">
-          <i class="fa fa-paper-plane" aria-hidden="true"></i>
+          <span class="material-icons material-symbols-outlined">send</span>
         </div>
       </div>
     </div>
